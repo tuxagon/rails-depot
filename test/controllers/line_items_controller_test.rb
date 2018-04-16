@@ -26,6 +26,22 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'td', "Programming Ruby 1.9"
   end
 
+  test "should add unique items to cart" do
+    post line_items_url, params: { product_id: products(:ruby).id }
+    post line_items_url, params: { product_id: products(:one).id }
+    @cart = Cart.find(session[:cart_id])
+
+    assert @cart.line_items.count == 2
+  end
+
+  test "should combine duplicate items when added to cart" do
+    post line_items_url, params: { product_id: products(:ruby).id }
+    post line_items_url, params: { product_id: products(:ruby).id }
+    @cart = Cart.find(session[:cart_id])
+
+    assert @cart.line_items.count == 1
+  end
+
   test "should show line_item" do
     get line_item_url(@line_item)
     assert_response :success
