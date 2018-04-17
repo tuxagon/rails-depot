@@ -11,6 +11,17 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    if Integer(params[:id]) != @cart.id
+      respond_to do |format|
+        format.html {
+          redirect_to store_index_url,
+          notice: 'Invalid cart'
+        }
+        format.json {
+          render json: 'Access Denied', status: :unauthorized
+        }
+      end
+    end
   end
 
   # GET /carts/new
