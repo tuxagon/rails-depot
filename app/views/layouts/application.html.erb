@@ -15,6 +15,11 @@
     </header>
     <section class="content">
       <nav class="side_nav">
+        <% if @cart %>
+          <div id="cart" class="carts">
+            <%= render @cart %>
+          </div>
+        <% end %>
         <ul>
           <li><%= time_tag Date.today %></li>
           <li><a href="/">Home</a></li>
