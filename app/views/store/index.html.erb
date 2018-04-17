@@ -4,7 +4,7 @@
 
 <h1>Your Pragmatic Catalog</h1>
 
-<% if @counter > 5 %>
+<% if @counter && @counter > 5 %>
   <p>
     Visted <%= @counter %> <%= "time".pluralize(@counter) %> before adding item to cart
   </p>
