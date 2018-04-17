@@ -10,6 +10,7 @@
     <%= button_to 'X', line_item,
                   method: :delete,
                   controller: :line_items,
-                  data: { confirm: 'Are you sure?' } %>
+                  data: { confirm: 'Are you sure?' },
+                  remote: true %>
   </td>
 </tr>
