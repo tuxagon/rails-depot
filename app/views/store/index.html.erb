@@ -14,8 +14,16 @@
   <% cache @products do %>
     <% @products.each do |product| %>
       <% cache product do %>
+        <% if product == @product %>
+        <li class="product-highlight">
+        <% else %>
         <li>
-          <%= image_tag(product.image_url) %>
+        <% end %>
+          <%= button_to line_items_path(product_id: product),
+            remote: true,
+            form_class: "image_form" do %>
+            <%= image_tag(product.image_url) %>
+          <% end %>
           <h2><%= product.title %></h2>
           <p>
             <%= sanitize(product.description) %>

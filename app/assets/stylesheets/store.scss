@@ -21,13 +21,21 @@
         content: " ";
         display: block;
       }
-      img {
+      form.image_form {
         float: left;
-        padding: 1em;
-        margin-right: 1em;
-        margin-bottom: 1em;
-        box-shadow: 0.176em 0.176em 0.354em 0px rgba(0,0,0,0.75);
+        button {
+          padding: 0;
+          background: none;
+          border: none;
+          img {
+            padding: 1em;
+            margin-right: 1em;
+            margin-bottom: 1em;
+            box-shadow: 0.176em 0.176em 0.354em 0px rgba(0,0,0,0.75);
+          }
+        }
       }
+
       .price {
         font-size: 1.414em;
       }
@@ -48,4 +56,17 @@
       }
     }
   }
+}
+
+@keyframes product-highlight {
+  0% {
+    background: #8f8;
+  }
+  100% {
+    background: none;
+  }
+}
+
+.product-highlight {
+  animation: product-highlight 1s;
 }
