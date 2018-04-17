@@ -7,10 +7,9 @@
   <td><%= line_item.product.title %></td>
   <td class="price"><%= number_to_currency(line_item.total_price) %></td>
   <td class="actions">
-    <%= button_to 'X', line_item,
+      <%= button_to '-', line_item,
                   method: :delete,
                   controller: :line_items,
-                  data: { confirm: 'Are you sure?' },
                   remote: true %>
   </td>
 </tr>

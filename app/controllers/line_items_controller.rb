@@ -53,6 +53,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.update(line_item_params)
         format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+        format.js { @current_item = @line_item }
         format.json { render :show, status: :ok, location: @line_item }
       else
         format.html { render :edit }
@@ -65,7 +66,11 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     product_title = @line_item.product.title
-    @line_item.destroy
+    if @line_item.quantity > 1
+      LineItem.update(@line_item.id, quantity: @line_item.quantity - 1)
+    else
+      @line_item.destroy
+    end
     respond_to do |format|
       format.html {
         redirect_to store_index_url,
