@@ -56,4 +56,15 @@
       padding: 0.5em 0;
     }
   }
+
+  .order_detail {
+    th, td {
+      border: solid thin #bbb;
+      padding: 0.354em;
+    }
+    td {
+      text-align: left;
+    }
+  }
 }
+
