@@ -23,6 +23,7 @@
 
     <%= button_to 'Checkout', new_order_path,
                   method: :get,
-                  class: "checkout" %>
+                  class: "checkout",
+                  disabled: @no_checkout %>
   </div>
 </article>
