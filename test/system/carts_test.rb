@@ -1,9 +1,25 @@
 require "application_system_test_case"
 
 class CartsTest < ApplicationSystemTestCase
-  # test "visiting the index" do
-  #   visit carts_url
-  #
-  #   assert_selector "h1", text: "Cart"
-  # end
+  test "add to cart" do
+    visit store_index_url
+
+    assert_no_selector ".line-item-highlight"
+
+    first('.catalog li').click_on 'Add to Cart'
+
+    assert_selector ".line-item-highlight"
+  end
+
+  test "empty cart" do
+    visit store_index_url
+
+    first('.catalog li').click_on 'Add to Cart'
+    
+    assert_selector ".line-item-highlight"
+
+    page.accept_confirm { click_on 'Empty cart' }
+
+    assert_no_selector ".line-item-highlight"
+  end
 end
