@@ -20,5 +20,10 @@
   <%= @order.pay_type %>
 </p>
 
+<p>
+  <strong>Ship date:</strong>
+  <%= @order.ship_date %>
+</p>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

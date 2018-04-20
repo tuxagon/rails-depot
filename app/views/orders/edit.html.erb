@@ -1,6 +1,27 @@
-<h1>Editing Order</h1>
+<h1>Shipping an Order</h1>
 
-<%= render 'form', order: @order %>
+<%= form_with(model: @order, local: true) do |form| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being shipped:</h2>
+
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ship_date %>
+    <%= form.date_field :ship_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Ship Order' %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @order %> |
 <%= link_to 'Back', orders_path %>

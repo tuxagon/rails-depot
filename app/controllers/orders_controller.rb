@@ -52,7 +52,8 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     respond_to do |format|
-      if @order.update(order_params)
+      if @order.update(ship_params)
+        ShipOrderJob.perform_later(@order)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
@@ -81,6 +82,10 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:name, :address, :email, :pay_type)
+    end
+
+    def ship_params
+      params.require(:order).permit(:ship_date)
     end
 
     def pay_type_params
