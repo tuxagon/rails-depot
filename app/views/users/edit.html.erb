@@ -1,6 +1,6 @@
 <h1>Editing User</h1>
 
-<%= render 'form', user: @user %>
+<%= render 'form', { user: @user, edit_page: true } %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

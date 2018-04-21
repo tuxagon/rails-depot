@@ -1,3 +1,5 @@
+<% edit_page = false if edit_page.nil? %>
+
 <div class="depot_form">
 
   <%= form_with(model: user, local: true) do |form| %>
@@ -19,6 +21,13 @@
       <%= form.label :name, 'Name:' %>
       <%= form.text_field :name, id: :user_name, size: 40 %>
     </div>
+
+    <% if edit_page %>
+      <div class="field">
+        <%= form.label :old_password, 'Old Password:' %>
+        <%= form.password_field :old_password, id: :old_password, size: 40 %>
+      </div>
+    <% end %>
 
     <div class="field">
       <%= form.label :password, 'Password:' %>
