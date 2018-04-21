@@ -6,7 +6,12 @@ class ApplicationController < ActionController::Base
 
     def authorize
       unless User.find_by(id: session[:user_id])
-        redirect_to login_url, notice: "Please log in"
+        redirect_to login_url,
+          notice: "Please log in" unless no_admin_in_development
       end
+    end
+
+    def no_admin_in_development
+      Rails.env.development? && User.count.zero?
     end
 end
