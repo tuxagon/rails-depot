@@ -15,6 +15,29 @@ es:
       title:      "Carrito de la Compra"
       empty:      "Vaciar Carrito"
       checkout:   "Comprar"
+  orders:
+    new:
+      legend:          "Por favor, introduzca sus datos"
+    form:
+      name:            "Nombre"
+      address_html:    "Direcci&oacute;n"
+      email:           "Email"
+      pay_type:        "Forma de pago"
+      pay_prompt_html: "Seleccione un método de pago"
+      submit:          "Realizar Pedido"
+      pay_types:
+        check:          "Cheque"
+        credit_card:    "Tarjeta de Crédito"
+        purchase_order: "Orden de Compra"
+      check_pay_type:
+        routing_number: "# de Enrutamiento"
+        account_number: "# de Cuenta"
+      credit_card_pay_type:
+        cc_number: "Número"
+        expiration_date: "Expiración"
+      purchase_order_pay_type:
+        po_number: "Número"
+  thanks: "Gracias por su pedido"
   date:
     month_names: 
       - "Enero"
@@ -39,3 +62,22 @@ es:
         separator: ","
         delimiter: "."
         format:    "%n&nbsp;%u"
+  activerecord:
+    errors:
+      messages:
+        inclusion: "no está incluido de la lista"
+        blank:     "no puede quedar en blanco"
+    models:
+      order: "pedido"
+    attributes:
+      order:
+        address: "Dirección"
+        name:    "Nombre"
+        email:   "Email"
+        pay_type: "Forma de pago"
+  errors:
+    template:
+      body:        "Hay problemas con los siguientes campos:"
+      header:
+        one:       "1 error ha impedido que este %{model} se guarde"
+        other:     "%{count} errores han impedido que este %{model} se guarde"
